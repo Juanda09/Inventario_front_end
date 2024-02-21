@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="container text-center" style="margin: 30px;">
+    <h3>Agregar proveedor</h3>
+  </div>
+  <form class="row g-3" (ngSubmit)="OnSubmit()">
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre del proveedor</label>
+      <input type="text" class="form-control" id="nombre" name="nombre" required [(ngModel)]="nombre">
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email del proveedor</label>
+      <input type="email"  class="form-control" id="email" name="email" required [(ngModel)]="email">
+    </div>
+    <div class="mb-3">
+      <label for="Telefono" class="form-label">Telefono del proveedor</label>
+      <input type="text" class="form-control" id="Telefono" name="Telefono" required [(ngModel)]="telefono">
+    </div>
+    <div class="mb-3">
+      <label for="Direccion" class="form-label">Direccion del proveedor</label>
+      <input type="text" class="form-control" id="Direccion" name="Direccion" required [(ngModel)]="direccion">
+    </div>
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary me-3">Agregar</button>
+      <button routerLink="productos" class="btn btn-danger me-3">Cancelar</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,20 @@
+<!-- agregar-categoria-dialogo.component.html -->
+
+<h2 mat-dialog-title>Agregar Nueva Categoría</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="categoriaForm">
+
+    <mat-form-field>
+      <input matInput placeholder="Categoría" formControlName="categoria" required>
+    </mat-form-field>
+
+    <!-- Puedes agregar otros campos según tus necesidades -->
+
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="onSave()">Agregar</button>
+  <button mat-raised-button color="warn" (click)="onCancel()">Cancelar</button>
+</mat-dialog-actions>

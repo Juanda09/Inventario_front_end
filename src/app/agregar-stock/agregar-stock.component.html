@@ -1,0 +1,60 @@
+<div class="container">
+  <div class="container text-center" style="margin: 30px;">
+    <h3>Agregar stock</h3>
+  </div>
+  <form class="row g-3" (ngSubmit)="OnSubmit()">
+    <div class="mb-3">
+      <label for="Producto" class="form-label">Producto</label>
+      <select class="form-select"  id="Producto" [(ngModel)]="idProducto" name="Producto"disabled="true">
+        <option *ngFor="let producto of productos" [value]="producto.idProducto">{{producto.descripcion}}</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="Producto" class="form-label">Tipo de stock</label>
+      <select class="form-select"  id="tipodestock" [(ngModel)]="tipo" name="tipodestock"disabled="true">
+        <option value='Entrada'>Entrada</option>
+        <option value='Salida'>Salida</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="Cantidad" class="form-label">Cantidad</label>
+      <input type="number" class="form-control" id="Cantidad" name="Cantidad" required [(ngModel)]="cantidad">
+    </div>
+
+    <div class="mb-3"*ngIf="tipo=='Entrada'">
+     <label for="motivo" class="form-label">Selecciona un motivo de entrada:</label>
+     <select id="motivo" name="motivo"class="form-select" [(ngModel)]="Motivo">
+       <option value="Compra de productos">Compra de productos</option>
+       <option value="Producción interna">Producción interna</option>
+       <option value="Donaciones o regalos">Donaciones o regalos</option>
+       <option value="Devolución de productos">Devolución de productos</option>
+       <option value="Transferencias internas">Transferencias internas</option>
+       <option value="Reposición de inventario">Reposición de inventario</option>
+       <option value="Correcciones de errores">Correcciones de errores</option>
+       <option value="Descomposición o caducidad">Descomposición o caducidad</option>
+      </select>
+    </div>
+    <div class="mb-3" *ngIf="tipo=='Salida'">
+      <label for="motivo" class="form-label">Selecciona un motivo de salida:</label>
+      <select id="motivo" name="motivo"class="form-select"[(ngModel)]="Motivo">
+       <option value="Venta a clientes">Venta a clientes</option>
+       <option value="Consumo interno">Consumo interno</option>
+       <option value="Devoluciones de clientes">Devoluciones de clientes</option>
+       <option value="Obsolescencia o daño">Obsolescencia o daño</option>
+       <option value="Robo o pérdida">Robo o pérdida</option>
+       <option value="Transferencia entre ubicaciones">Transferencia entre ubicaciones</option>
+       <option value="Donaciones">Donaciones</option>
+       <option value="Demostraciones o muestras">Demostraciones o muestras</option>
+       <option value="Deterioro o caducidad">Deterioro o caducidad</option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="Observacion" class="form-label">Observaciones:</label>
+      <textarea class="form-control" id="Observacion" name="Observacion" rows="4" cols="50" [(ngModel)]="Observacion"></textarea>
+    </div>
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary me-3">Agregar stock del producto</button>
+      <button (click)="Cancelar()" class="btn btn-danger me-3">Cancelar</button>
+    </div>
+  </form>
+</div>

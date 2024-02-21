@@ -1,0 +1,45 @@
+<div class="container text-center" style="margin: 30px;">
+  <h4>Proveedores</h4>
+</div>
+
+  <table class="table table-striped table-hover align-middle">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Nombre del proveedor</th>
+        <th scope="col">Direccion del proveedor</th>
+        <th scope="col">Telefono del proveedor</th>
+        <th scope="col">Email del proveedor</th>
+        <th scope="col">Fecha de registro</th>
+        <th scope="col">Fecha de ultima Actualizacion</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let provedor of provedores | paginate:{itemsPerPage:3,currentPage:page}">
+        <th scope="row">{{provedor.id}}</th>
+        <td>{{provedor.nombre}}</td>
+        <td>{{provedor.direccion}}</td>
+        <td>{{provedor.telefono}}</td>
+        <td>{{provedor.email}}</td>
+        <td>{{provedor.fechaCreacion | date:"dd/MM/yyyy HH:mm:ss"}}</td>
+        <td>{{provedor.fecha| date:'dd/MM/yyyy HH:mm:ss'}}</td>
+        <!-- Boton para editar el proveedor -->
+        <td class="text-center"><button type="button" class="btn btn-outline-warning" (click)="Editar(provedor.id)">Editar</button>
+      </tr>
+    </tbody>
+  </table>
+  <pagination-controls
+  (pageChange)="page = $event"
+  (pageBoundsCorrection)="page = $event"
+  [maxSize]="100"
+  [directionLinks]="true"
+  [autoHide]="true"
+  [responsive]="true"
+  previousLabel="Anterior"
+  nextLabel="Siguiente"
+  screenReaderPaginationLabel="Pagination"
+  screenReaderPageLabel="page"
+  screenReaderCurrentLabel="You're on page"
+></pagination-controls>
+

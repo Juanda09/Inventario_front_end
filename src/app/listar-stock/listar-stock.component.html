@@ -1,0 +1,55 @@
+<div class="container text-center" style="margin: 30px;">
+  <h4>Stocks</h4>
+</div>
+<div class="mb-3">
+  <label for="Producto" class="form-label">Hacer el stock: </label>
+  <select class="form-select"  id="Producto" [(ngModel)]="idProducto" name="Producto">
+    <option *ngFor="let producto of productos" [value]="producto.idProducto">{{producto.descripcion}}</option>
+  </select>
+  <button type="button" class="btn btn-outline-primary btn-sm me-3 mt-3" (click)="Entrada(idProducto)">Entradas</button>
+  <button type="button" class="btn btn-outline-danger btn-sm me-3 mt-3" (click)="Salida(idProducto)">Salidas</button>
+</div>
+  <table class="table table-striped table-hover align-middle">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Producto</th>
+        <th scope="col">Categoria</th>
+        <th scope="col">Proveedor</th>
+        <th scope="col">Tipo de Stock</th>
+        <th scope="col">Cantidad</th>
+        <th scope="col">Motivo</th>
+        <th scope="col">Fecha de registro</th>
+        <th scope="col">Observaciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let stock of Stocks | paginate:{itemsPerPage:3,currentPage:page}">
+        <th scope="row">{{stock.idStock}}</th>
+        <td>{{stock.producto.descripcion}}</td>
+        <td>{{stock.producto.categoria.categoria}}</td>
+        <td>{{stock.producto.provedor.nombre}}</td>
+        <td>{{stock.tipo_de_stock}}</td>
+        <td>{{stock.cantidad}}</td>
+        <td>{{stock.motivo}}</td>
+        <td>{{ stock.fechaCreacion | date:'dd/MM/yyyy HH:mm:ss'}}</td>
+        <td *ngIf="stock.observacion!=null">{{stock.observacion}}</td>
+        <td *ngIf="stock.observacion==null">Ninguna observacion</td>
+      </tr>
+    </tbody>
+</table>
+<!-- Paginador -->
+<pagination-controls
+  (pageChange)="page = $event"
+  (pageBoundsCorrection)="page = $event"
+  [maxSize]="100"
+  [directionLinks]="true"
+  [autoHide]="true"
+  [responsive]="true"
+  previousLabel="Anterior"
+  nextLabel="Siguiente"
+  screenReaderPaginationLabel="Pagination"
+  screenReaderPageLabel="page"
+  screenReaderCurrentLabel="You're on page"
+></pagination-controls>
+

@@ -1,0 +1,60 @@
+<div class="container">
+
+  <div class="container text-center" style="margin: 30px;">
+    <h3>Sistema de inventarios</h3>
+  </div>
+  <div class="container text-center" style="margin: 30px;">
+    <h4>Productos</h4>
+  </div>
+  <table class="table table-striped table-hover align-middle" *ngIf="productos!=null">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Descripcion del producto</th>
+        <th scope="col">Categoria</th>
+        <th scope="col">Proveedor</th>
+        <th scope="col">Precio</th>
+        <th scope="col">Existencias</th>
+        <th scope="col">Fecha de Creacion</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let producto of productos
+      | paginate:{itemsPerPage:3,currentPage:page}">
+        <th scope="row">{{producto.idProducto}}</th>
+        <td>{{producto.descripcion}}</td>
+        <td>{{producto.categoria.categoria}}</td>
+        <td>{{producto.provedor.nombre}}</td>
+        <td>{{producto.precio}}</td>
+        <td>{{producto.existencia}}</td>
+        <td>{{producto.fechaCreacion | date:"dd/MM/yyyy HH:mm:ss"}}</td>
+        <td class="text-center">
+          <div>
+            <button (click)="Editarproducto(producto.idProducto)" class="btn btn-outline-warning btn-sm me-3">Editar</button>
+            <button type="button" class="btn btn-outline-primary btn-sm me-3" (click)="Entrada(producto.idProducto)">Entradas</button>
+            <button type="button" class="btn btn-outline-danger btn-sm me-3" (click)="Salida(producto.idProducto)">Salidas</button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- Paginador -->
+  <pagination-controls
+  (pageChange)="page = $event"
+  (pageBoundsCorrection)="page = $event"
+  [maxSize]="100"
+  [directionLinks]="true"
+  [autoHide]="true"
+  [responsive]="true"
+  previousLabel="Anterior"
+  nextLabel="Siguiente"
+  screenReaderPaginationLabel="Pagination"
+  screenReaderPageLabel="page"
+  screenReaderCurrentLabel="You're on page"
+></pagination-controls>
+
+  <div *ngIf="productos==null">
+    <h5>No hay productos registrados en el sistema.</h5>
+  </div>
+</div>

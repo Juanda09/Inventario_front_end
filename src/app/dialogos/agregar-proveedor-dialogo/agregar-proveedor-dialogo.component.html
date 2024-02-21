@@ -1,0 +1,38 @@
+<!-- proveedor-form-dialog.component.html -->
+
+<h2 mat-dialog-title>Agregar Proveedor</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="proveedorForm" (ngSubmit)="onSubmit()">
+
+    <div class="mb-3">
+      <mat-form-field>
+        <input matInput placeholder="Nombre del proveedor" formControlName="nombre" required>
+      </mat-form-field>
+    </div>
+
+    <div class="mb-3">
+      <mat-form-field>
+        <input matInput placeholder="Email del proveedor" formControlName="email" required>
+      </mat-form-field>
+    </div>
+
+    <div class="mb-3">
+      <mat-form-field>
+        <input matInput placeholder="Telefono del proveedor" formControlName="telefono" required>
+      </mat-form-field>
+    </div>
+
+    <div class="mb-3">
+      <mat-form-field>
+        <input matInput placeholder="Direccion del proveedor" formControlName="direccion" required>
+      </mat-form-field>
+    </div>
+
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-raised-button color="primary" (click)="onSubmit()">Agregar</button>
+  <button mat-raised-button color="warn" (click)="onCancel()">Cancelar</button>
+</mat-dialog-actions>

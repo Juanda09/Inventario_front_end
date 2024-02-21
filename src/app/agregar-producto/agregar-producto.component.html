@@ -1,0 +1,37 @@
+<div class="container">
+  <div class="container text-center" style="margin: 30px;">
+    <h3>Agregar producto</h3>
+  </div>
+  <form class="row g-3" (ngSubmit)="OnSubmit()">
+    <div class="mb-3">
+      <label for="descripcion" class="form-label">Descripcion del producto</label>
+      <input type="text" class="form-control" id="descripcion" name="descripcion" required [(ngModel)]="producto.descripcion">
+    </div>
+    <div class="mb-3">
+      <label for="precio" class="form-label">Precio</label>
+      <input type="number" step="any" class="form-control" id="precio" name="precio" required [(ngModel)]="producto.precio">
+    </div>
+    <div class="mb-3">
+      <label for="idCategoria" class="form-label">Categoria</label>
+      <select class="form-select"  id="Categoria" [(ngModel)]="id" name="Categoria">
+        <option *ngFor="let category of Categorias" [value]="category.idCategoria">{{category.categoria}}</option>
+      </select>
+      <button class="btn btn-outline-primary btn-sm mt-3" (click)="abrirDialogoAgregarCategoria()">Agregar</button>
+    </div>
+    <div class="mb-3">
+      <label for="Proveedores" class="form-label">Proveedor</label>
+      <select class="form-select"  id="Proveedores" [(ngModel)]="idproveedor" name="Proveedores">
+        <option *ngFor="let proveedor of Proveedores" [value]="proveedor.id">{{proveedor.nombre}}</option>
+      </select>
+      <button class="btn btn-outline-primary btn-sm mt-3" (click)="abrirDialogoAgregarProvedor()">Agregar</button>
+    </div>
+    <div class="mb-3">
+      <label for="Existencia" class="form-label">Existencia</label>
+      <input type="number" class="form-control" id="Existencia" name="existencia" required [(ngModel)]="producto.existencia">
+    </div>
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary me-3">Agregar</button>
+      <button routerLink="productos" class="btn btn-danger me-3">Cancelar</button>
+    </div>
+  </form>
+</div>

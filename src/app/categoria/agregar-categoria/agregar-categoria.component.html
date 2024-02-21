@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="container text-center" style="margin: 30px;">
+    <h3>Agregar Categoria</h3>
+  </div>
+  <form class="row g-3" (ngSubmit)="OnSubmit()">
+    <div class="mb-3">
+      <label for="Categoria" class="form-label">Categoria</label>
+      <input type="text" class="form-control" id="Categoria" name="Categoria"  [(ngModel)]="categoria.categoria" required="true">
+    </div>
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary me-3">Agregar</button>
+      <button routerLink="productos" class="btn btn-danger me-3">Cancelar</button>
+    </div>
+  </form>
+</div>
